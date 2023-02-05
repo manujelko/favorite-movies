@@ -5,8 +5,9 @@ const cancelAddMovieButton = addMovieModal.querySelector(".btn--passive");
 const confirmAddMovieButton = cancelAddMovieButton.nextElementSibling;
 const userInputs = addMovieModal.querySelectorAll("input");
 
+const movies = [];
+
 function toggleMovieModal() {
-  console.log("hello");
   addMovieModal.classList.toggle("visible");
   toggleBackdrop();
 }
@@ -21,6 +22,7 @@ function backdropClickHandler() {
 
 function cancelAddMovieHandler() {
   toggleMovieModal();
+  clearMovieInputs();
 }
 
 function addMovieHandler() {
@@ -36,6 +38,23 @@ function addMovieHandler() {
     +ratingValue > 5
   ) {
     alert("Please enter valid values (rating between 1 and 5)");
+  }
+
+  const newMovie = {
+    title: titleValue,
+    image: imageUrlValue,
+    rating: ratingValue,
+  };
+
+  movies.push(newMovie);
+  console.log(movies);
+  toggleMovieModal();
+  clearMovieInputs();
+}
+
+function clearMovieInputs() {
+  for (const userInput of userInputs) {
+    userInput.value = "";
   }
 }
 
