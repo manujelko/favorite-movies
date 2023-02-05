@@ -124,6 +124,7 @@ function deleteMovie(movieId) {
   const listRoot = document.getElementById("movie-list");
   listRoot.removeChild(listRoot.children[movieIndex]);
   closeMovieDeletionModal();
+  updateUI();
 }
 
 function closeMovieModal() {
